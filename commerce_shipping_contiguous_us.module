@@ -1,8 +1,8 @@
 <?php 
 /**
  * Implements hook_form_alter().
- */
-function custom_mods_form_alter(&$form, $form_state, $form_id) {
+*/
+function commerce_shipping_contiguous_us_form_alter(&$form, $form_state, $form_id) {
   if ($form_id == 'commerce_checkout_form_checkout') {
     // Restrict to contiguous US only
     $contiguous_us = array(
@@ -57,8 +57,6 @@ function custom_mods_form_alter(&$form, $form_state, $form_id) {
       'WI' => t('Wisconsin'),
       'WY' => t('Wyoming'),
     );
-    $form['customer_profile_billing']['commerce_customer_address']['und']['0']['locality_block']['administrative_area']['#options'] = $contiguous_us;
     $form['customer_profile_shipping']['commerce_customer_address']['und']['0']['locality_block']['administrative_area']['#options'] = $contiguous_us;
-
   }
 }
