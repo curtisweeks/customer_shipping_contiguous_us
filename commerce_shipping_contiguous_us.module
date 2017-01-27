@@ -1,0 +1,64 @@
+<?php 
+/**
+ * Implements hook_form_alter().
+ */
+function custom_mods_form_alter(&$form, $form_state, $form_id) {
+  if ($form_id == 'commerce_checkout_form_checkout') {
+    // Restrict to Continental US only
+    $continental_us = array(
+      ''   => t('--'),
+      'AL' => t('Alabama'),
+      'AZ' => t('Arizona'),
+      'AR' => t('Arkansas'),
+      'CA' => t('California'),
+      'CO' => t('Colorado'),
+      'CT' => t('Connecticut'),
+      'DE' => t('Delaware'),
+      'DC' => t('District Of Columbia'),
+      'FL' => t('Florida'),
+      'GA' => t('Georgia'),
+      'ID' => t('Idaho'),
+      'IL' => t('Illinois'),
+      'IN' => t('Indiana'),
+      'IA' => t('Iowa'),
+      'KS' => t('Kansas'),
+      'KY' => t('Kentucky'),
+      'LA' => t('Louisiana'),
+      'ME' => t('Maine'),
+      'MD' => t('Maryland'),
+      'MA' => t('Massachusetts'),
+      'MI' => t('Michigan'),
+      'MN' => t('Minnesota'),
+      'MS' => t('Mississippi'),
+      'MO' => t('Missouri'),
+      'MT' => t('Montana'),
+      'NE' => t('Nebraska'),
+      'NV' => t('Nevada'),
+      'NH' => t('New Hampshire'),
+      'NJ' => t('New Jersey'),
+      'NM' => t('New Mexico'),
+      'NY' => t('New York'),
+      'NC' => t('North Carolina'),
+      'ND' => t('North Dakota'),
+      'OH' => t('Ohio'),
+      'OK' => t('Oklahoma'),
+      'OR' => t('Oregon'),
+      'PA' => t('Pennsylvania'),
+      'RI' => t('Rhode Island'),
+      'SC' => t('South Carolina'),
+      'SD' => t('South Dakota'),
+      'TN' => t('Tennessee'),
+      'TX' => t('Texas'),
+      'UT' => t('Utah'),
+      'VT' => t('Vermont'),
+      'VA' => t('Virginia'),
+      'WA' => t('Washington'),
+      'WV' => t('West Virginia'),
+      'WI' => t('Wisconsin'),
+      'WY' => t('Wyoming'),
+    );
+    $form['customer_profile_billing']['commerce_customer_address']['und']['0']['locality_block']['administrative_area']['#options'] = $continental_us;
+    $form['customer_profile_shipping']['commerce_customer_address']['und']['0']['locality_block']['administrative_area']['#options'] = $continental_us;
+
+  }
+}
